@@ -101,13 +101,16 @@ export default PhysicsSimulation;
 When user requests a simulation, respond ONLY with the complete React component code. Make it engaging and physically accurate!`;
 
 export class AIService {
+  private openaiClient = openai({ 
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY 
+  });
+  private googleClient = google({ 
+    apiKey: import.meta.env.VITE_GOOGLE_API_KEY 
+  });
+  
   private models = {
-    'gpt-4o': openai({ 
-      apiKey: import.meta.env.VITE_OPENAI_API_KEY 
-    }).chat('gpt-4o'),
-    'gemini-2.0-flash-exp': google({ 
-      apiKey: import.meta.env.VITE_GOOGLE_API_KEY 
-    }).generativeAI('gemini-2.0-flash-exp')
+    'gpt-4o': this.openaiClient.chat('gpt-4o'),
+    'gemini-2.0-flash-exp': this.googleClient.generativeAI('gemini-2.0-flash-exp')
   };
 
   async generateSimulation(prompt: string, model: 'gpt-4o' | 'gemini-2.0-flash-exp') {
