@@ -37,7 +37,7 @@ function App() {
 
       // Load Oimo.js
       const script = document.createElement('script');
-      script.src = '/build/oimo.min.js';
+      script.src = '/oimo.min.js';
       script.async = true;
       document.head.appendChild(script);
     };

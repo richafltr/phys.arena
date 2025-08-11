@@ -102,8 +102,12 @@ When user requests a simulation, respond ONLY with the complete React component 
 
 export class AIService {
   private models = {
-    'gpt-4o': openai('gpt-4o'),
-    'gemini-2.0-flash-exp': google('gemini-2.0-flash-exp')
+    'gpt-4o': openai({ 
+      apiKey: import.meta.env.VITE_OPENAI_API_KEY 
+    }),
+    'gemini-2.0-flash-exp': google({ 
+      apiKey: import.meta.env.VITE_GOOGLE_API_KEY 
+    })
   };
 
   async generateSimulation(prompt: string, model: 'gpt-4o' | 'gemini-2.0-flash-exp') {
