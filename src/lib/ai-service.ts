@@ -104,10 +104,10 @@ export class AIService {
   private models = {
     'gpt-4o': openai({ 
       apiKey: import.meta.env.VITE_OPENAI_API_KEY 
-    }),
+    }).chat('gpt-4o'),
     'gemini-2.0-flash-exp': google({ 
       apiKey: import.meta.env.VITE_GOOGLE_API_KEY 
-    })
+    }).generativeAI('gemini-2.0-flash-exp')
   };
 
   async generateSimulation(prompt: string, model: 'gpt-4o' | 'gemini-2.0-flash-exp') {
